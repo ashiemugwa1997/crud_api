@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\uZer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('articles', function() {
+Route::get('uZers', function() {
     // If the Content-Type and Accept headers are set to 'application/json',
     // this will return a JSON structure. This will be cleaned up later.
-    return Article::all();
+    return uZer::all();
 });
 
 Route::get('uZer/{id}', function($id) {
@@ -33,14 +34,20 @@ Route::post('uZers', function(Request $request) {
 });
 
 Route::put('uZers/{id}', function(Request $request, $id) {
-    $article = Article::findOrFail($id);
-    $article->update($request->all());
+    $uZer = uZer::findOrFail($id);
+    $uZer->update($request->all());
 
-    return $article;
+    return $uZer;
 });
 
 Route::delete('uZers/{id}', function($id) {
-    Article::find($id)->delete();
+    uZer::find($id)->delete();
 
     return 204;
 });
+
+Route::get('uZers', 'uZerController@index');
+Route::get('uZers/{uZer}', 'uZerController@show');
+Route::post('uZers', 'uZerController@store');
+Route::put('uZers/{uZer}', 'uZerController@update');
+Route::delete('uZers/{uZer}', 'uZerController@delete');
