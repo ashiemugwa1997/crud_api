@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class options extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'firstname',
-        'last_name',
-        'email',
-        'username',
-        'password'
+        'option_id',
+        'option_name',
+        'option_type',
+        'option_values',
+        'sort_order'
     ];
 }
