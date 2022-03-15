@@ -17,6 +17,6 @@ class orderEntity extends Model
         'cash_data',
         'is_synchronized',
         'is_return',
-        'refunded_order_id',
+        'refunded_order_id'
     ];
 }
